@@ -28,7 +28,7 @@ export class SynthKey extends React.Component<Note> {
   render(): React.ReactNode {
     return (
       <button
-        className={styles.button}
+        className={styles.key}
         onClick={this.handleClick}
       >{this.pitch}</button>
     )

@@ -1,5 +1,14 @@
-.button {
-  color: black;
-  background-color: white;
+.keyboard {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.key {
   height: 10em;
+  background-color: white;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  color: black;
+  flex: 1;
 }
