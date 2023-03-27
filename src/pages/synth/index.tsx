@@ -14,6 +14,9 @@ export default function SynthPage() {
         <SynthKey pitch='E4' duration='1n' />
         <SynthKey pitch='F4' duration='1n' />
         <SynthKey pitch='G4' duration='1n' />
+        <SynthKey pitch='A4' duration='1n' />
+        <SynthKey pitch='B4' duration='1n' />
+        <SynthKey pitch='C5' duration='1n' />
       </main>
     </>
   )
