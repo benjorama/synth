@@ -13,7 +13,8 @@ pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-Open [http://localhost:3000](http://localhost:3000/synth) to visit the synth page.
+
+Open [http://localhost:3000/synth](http://localhost:3000/synth) to visit the synth page.
 
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
