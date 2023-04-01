@@ -12,24 +12,31 @@ export class SynthKey extends React.Component<Note> {
   duration: string;
   pitch: string;
 
+
   constructor(props: Note) {
     super(props)
     this.pitch = props.pitch
     this.duration = props.duration
-    this.handleClick = this.handleClick.bind(this)
+    this.handleMouseDown = this.handleMouseDown.bind(this)
+    this.handleMouseUp = this.handleMouseUp.bind(this)
   }
 
-  async handleClick() {
+  async handleMouseDown() {
     //create a synth and connect it to the main output (your speakers)
     if (!this.destination) this.destination = new Tone.Synth().toDestination();
-    this.destination.triggerAttackRelease(this.pitch, this.duration);
+    this.destination.triggerAttack(this.pitch);
+  }
+
+  async handleMouseUp() {
+    this.destination?.triggerRelease();
   }
 
   render(): React.ReactNode {
     return (
       <button
         className={styles.key}
-        onClick={this.handleClick}
+        onMouseDown={this.handleMouseDown}
+        onMouseUp={this.handleMouseUp}
       >{this.pitch}</button>
     )
   }
