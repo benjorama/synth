@@ -1,8 +1,8 @@
 .keyboard {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
+   align-items: center;
+   display: flex;
+   justify-content: center;
+ }
 
 .key {
   height: 10em;
