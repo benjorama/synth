@@ -19,23 +19,23 @@ export class SynthKey extends React.Component<Pitch> {
     this.handleDragEnter = this.handleDragEnter.bind(this)
   }
 
-  async handleMouseDown() {
+  handleMouseDown() {
     //create a synth and connect it to the main output (your speakers)
     if (!this.destination) this.destination = new Tone.Synth().toDestination();
     this.destination.triggerAttack(this.pitch);
   }
 
-  async handleDragEnter() {
+  handleDragEnter() {
     //create a synth and connect it to the main output (your speakers)
     if (!this.destination) this.destination = new Tone.Synth().toDestination();
     this.destination.triggerAttack(this.pitch);
   }
 
-  async handleMouseUp() {
+  handleMouseUp() {
     this.destination?.triggerRelease();
   }
 
-  async handleDragLeave() {
+  handleDragLeave() {
     this.destination?.triggerRelease();
   }
 
