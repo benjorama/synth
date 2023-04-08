@@ -5,5 +5,6 @@ import { SynthKey } from './SynthKey'
 describe('SynthKey', () => {
   it('renders a Key', () => {
     render(<SynthKey pitch='C4' />)
+    expect(screen.getByText('C4')).toBeInTheDocument()
   })
 })
