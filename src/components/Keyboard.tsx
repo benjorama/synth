@@ -1,27 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react'
 import styles from '@/styles/Synth.module.css'
-import { SynthKey } from './SynthKey';
+import { SynthKey } from './SynthKey'
+import * as Tone from 'tone'
 
-export class Keyboard extends React.Component {
+export function Keyboard() {
+  const [powerOn, togglePower] = useState(false)
+  let synthList: Tone.Synth<Tone.SynthOptions>[] = []
 
-  constructor(props: any) {
-    super(props)
+  function handleClickPowerButton() {
+    togglePower(!powerOn)
+    powerOn ? initializeSynth : deactivateSynths
   }
 
-  render(): React.ReactNode {
-    return (
+  function initializeSynth() {
+    synthList.push(new Tone.Synth().toDestination())
+  }
+
+  function deactivateSynths() {
+    synthList.forEach(synth => {
+      synth.dispose()
+    })
+  }
+
+  return (
+    <>
+      <button
+        className={powerOn ? styles.powerOn : styles.powerOff}
+        onClick={handleClickPowerButton}
+      >Power</button>
+
       <div
         className={styles.keyboard}
       >
-        <SynthKey pitch='C4' />
-        <SynthKey pitch='D4' />
-        <SynthKey pitch='E4' />
-        <SynthKey pitch='F4' />
-        <SynthKey pitch='G4' />
-        <SynthKey pitch='A4' />
-        <SynthKey pitch='B4' />
-        <SynthKey pitch='C5' />
+        <SynthKey pitch='C4' synth={synthList[0]} />
       </div>
-    )
-  }
+    </>
+  )
 }
