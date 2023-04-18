@@ -1,3 +1,12 @@
+.powerOn {
+  color: black;
+  background-color: lime;
+}
+
+.powerOff {
+  background-color: red;
+}
+
 .keyboard {
    align-items: center;
    display: flex;
