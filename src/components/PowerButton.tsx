@@ -1,17 +1,16 @@
-import React, { useState } from 'react'
 import styles from '@/styles/Synth.module.css'
+import { MouseEventHandler } from 'react'
 
-export function PowerButton() {
-  const [power, setPower] = useState(false)
+interface powerButtonProps {
+  onClick: MouseEventHandler
+  power: boolean
+}
 
-  function handleClickPowerButton() {
-    setPower(!power)
-  }
-
+export function PowerButton({ onClick, power }: powerButtonProps) {
   return (
     <button
       className={power ? styles.powerOn : styles.powerOff}
-      onClick={handleClickPowerButton}
+      onClick={onClick}
     >Power</button>
   )
 }
