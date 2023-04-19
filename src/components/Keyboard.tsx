@@ -6,27 +6,35 @@ import * as Tone from 'tone'
 
 export function Keyboard() {
   const [power, setPower] = useState<boolean>(false)
-  const [synth, setSynth] = useState<Tone.Synth | undefined>(undefined)
+  const [synthList, setSynth] = useState<Tone.Synth[]>([])
 
-  function handleClickPowerButton() {
-    console.log(synth)
+  async function handleClickPowerButton() {
     setPower(!power)
-    if (!power)
-      setSynth(new Tone.Synth().toDestination())
-    else {
-      synth?.dispose()
-      setSynth(undefined)
+
+    if (!power) {
+      await Tone.start()
+      console.log('audio is ready')
+      let synths = []
+      for (let i = 0; i < 8; i++)
+        synths.push(new Tone.Synth().toDestination())
+      setSynth(synths)
+
+    } else {
+      synthList.forEach(synth => synth.dispose())
+      setSynth([])
     }
   }
 
   return (
-    <div>
+    <div
+    >
       <PowerButton onClick={handleClickPowerButton} power={power} />
-      <p>Synth is {synth ? 'loaded' : 'not loaded: click the red power button'}</p>
+      <p>Synth is {synthList.length > 0 ? 'loaded' : 'not loaded: click the red power button'}</p>
       <div
         className={styles.keyboard}
       >
-        <SynthKey />
+        <SynthKey synth={synthList[0]} keyboardKey="a" pitch="C4" duration='8n' />
+        <SynthKey synth={synthList[1]} keyboardKey="s" pitch="D4" duration='8n' />
       </div>
     </div>
   )
