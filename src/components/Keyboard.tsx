@@ -6,22 +6,21 @@ import * as Tone from 'tone'
 
 export function Keyboard() {
   const [power, setPower] = useState<boolean>(false)
-  const [synthList, setSynth] = useState<Tone.Synth[]>([])
+  const [synthList, setSynthList] = useState<Tone.Synth[]>([])
 
   async function handleClickPowerButton() {
     setPower(!power)
 
     if (!power) {
       await Tone.start()
-      console.log('audio is ready')
       let synths = []
       for (let i = 0; i < 8; i++)
         synths.push(new Tone.Synth().toDestination())
-      setSynth(synths)
+      setSynthList(synths)
 
     } else {
       synthList.forEach(synth => synth.dispose())
-      setSynth([])
+      setSynthList([])
     }
   }
 
