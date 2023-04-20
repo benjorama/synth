@@ -8,8 +8,9 @@ export function Keyboard() {
   const [power, setPower] = useState<boolean>(false)
   const [keysPressed, setKeysPressed] = useState<string[]>([])
   const [synthList, setSynthList] = useState<Tone.Synth[]>([])
+  const [octave, setOctave] = useState<number>(4)
 
-  const allowedUserKeys = ['a', 's', 'd', 'f', 'j', 'k', 'l', ';']
+  const allowedUserKeys = ['a', 's', 'd', 'f', 'j', 'k', 'l', ';', 'g', 'h']
 
   async function handleClickPowerButton() {
     setPower(!power)
@@ -31,14 +32,16 @@ export function Keyboard() {
     const key = e.key.toLowerCase()
     if (!keysPressed.includes(key) && allowedUserKeys.includes(key)) {
 
-      key === 'a' ? synthList[0].triggerAttack('C4') : ''
-      key === 's' ? synthList[1].triggerAttack('D4') : ''
-      key === 'd' ? synthList[2].triggerAttack('E4') : ''
-      key === 'f' ? synthList[3].triggerAttack('F4') : ''
-      key === 'j' ? synthList[4].triggerAttack('G4') : ''
-      key === 'k' ? synthList[5].triggerAttack('A4') : ''
-      key === 'l' ? synthList[6].triggerAttack('B4') : ''
-      key === ';' ? synthList[7].triggerAttack('C5') : ''
+      key === 'a' ? synthList[0].triggerAttack(`C${octave}`) : ''
+      key === 's' ? synthList[1].triggerAttack(`D${octave}`) : ''
+      key === 'd' ? synthList[2].triggerAttack(`E${octave}`) : ''
+      key === 'f' ? synthList[3].triggerAttack(`F${octave}`) : ''
+      key === 'j' ? synthList[4].triggerAttack(`G${octave}`) : ''
+      key === 'k' ? synthList[5].triggerAttack(`A${octave}`) : ''
+      key === 'l' ? synthList[6].triggerAttack(`B${octave}`) : ''
+      key === ';' ? synthList[7].triggerAttack(`C${octave + 1}`) : ''
+      key === 'g' ? setOctave(octave - 1) : ''
+      key === 'h' ? setOctave(octave + 1) : ''
 
       setKeysPressed([...keysPressed, key])
     }
@@ -49,8 +52,8 @@ export function Keyboard() {
 
     if (keysPressed.includes(key) && allowedUserKeys.includes(key)) {
 
-      key === 's' ? synthList[1].triggerRelease() : ''
       key === 'a' ? synthList[0].triggerRelease() : ''
+      key === 's' ? synthList[1].triggerRelease() : ''
       key === 'd' ? synthList[2].triggerRelease() : ''
       key === 'f' ? synthList[3].triggerRelease() : ''
       key === 'j' ? synthList[4].triggerRelease() : ''
@@ -72,14 +75,14 @@ export function Keyboard() {
       <div
         className={styles.keyboard}
       >
-        <SynthKey synth={synthList[0]} keyboardKey="a" pitch="C4" keyDown={keysPressed.includes('a')} />
-        <SynthKey synth={synthList[1]} keyboardKey="s" pitch="D4" keyDown={keysPressed.includes('s')} />
-        <SynthKey synth={synthList[2]} keyboardKey="d" pitch="E4" keyDown={keysPressed.includes('d')} />
-        <SynthKey synth={synthList[3]} keyboardKey="f" pitch="F4" keyDown={keysPressed.includes('f')} />
-        <SynthKey synth={synthList[4]} keyboardKey="j" pitch="G4" keyDown={keysPressed.includes('j')} />
-        <SynthKey synth={synthList[5]} keyboardKey="k" pitch="A4" keyDown={keysPressed.includes('k')} />
-        <SynthKey synth={synthList[6]} keyboardKey="l" pitch="B4" keyDown={keysPressed.includes('l')} />
-        <SynthKey synth={synthList[7]} keyboardKey=";" pitch="C5" keyDown={keysPressed.includes(';')} />
+        <SynthKey synth={synthList[0]} keyboardKey="a" pitch={`C${octave}`} keyDown={keysPressed.includes('a')} />
+        <SynthKey synth={synthList[1]} keyboardKey="s" pitch={`D${octave}`} keyDown={keysPressed.includes('s')} />
+        <SynthKey synth={synthList[2]} keyboardKey="d" pitch={`E${octave}`} keyDown={keysPressed.includes('d')} />
+        <SynthKey synth={synthList[3]} keyboardKey="f" pitch={`F${octave}`} keyDown={keysPressed.includes('f')} />
+        <SynthKey synth={synthList[4]} keyboardKey="j" pitch={`G${octave}`} keyDown={keysPressed.includes('j')} />
+        <SynthKey synth={synthList[5]} keyboardKey="k" pitch={`A${octave}`} keyDown={keysPressed.includes('k')} />
+        <SynthKey synth={synthList[6]} keyboardKey="l" pitch={`B${octave}`} keyDown={keysPressed.includes('l')} />
+        <SynthKey synth={synthList[7]} keyboardKey=";" pitch={`C${octave + 1}`} keyDown={keysPressed.includes(';')} />
       </div>
     </div>
   )
