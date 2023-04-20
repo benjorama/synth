@@ -1,10 +1,95 @@
+.powerButtonOff {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  border: 2px solid red;
+  box-shadow: 0 0 5px 0px #888;
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin: 0.5em;
+  cursor: pointer;
+}
+
+.powerButtonOff::before {
+    /* pseudo-elements don't appear unless content property is declared */
+    content: "";
+
+    /* design the element */
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    border: 5px solid red;
+    position: absolute;
+}
+
+.barOff {
+  height: 30%;
+  width: 5px;
+  background: red;
+  border-radius: 10px; /* for rounded ends */
+  position: absolute;
+  top: 5px;
+  box-shadow: 0 0 0 5px black;
+}
+
+.powerButtonOn {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  border: 2px solid lime;
+  box-shadow: 0 0 5px 0px #888;
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin: 0.5em;
+  cursor: pointer;
+}
+
+.powerButtonOn::before {
+    /* pseudo-elements don't appear unless content property is declared */
+    content: "";
+
+    /* design the element */
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    border: 5px solid lime;
+    position: absolute;
+}
+
+.barOn {
+  height: 30%;
+  width: 5px;
+  background: lime;
+  border-radius: 10px; /* for rounded ends */
+  position: absolute;
+  top: 5px;
+  box-shadow: 0 0 0 5px black;
+}
+
+.button {
+  background-color: red;
+  width: 1000px;
+  height: 1000px;
+}
+
+
 .powerOn {
+  margin: 1em;
   color: black;
   background-color: lime;
+  border-radius: 50%;
+  height: 4em;
+  width: 4em;
 }
 
 .powerOff {
+  margin: 1em;
   background-color: red;
+  border-radius: 50%;
+  height: 4em;
+  width: 4em;
 }
 
 .keyboard {
