@@ -1,5 +1,5 @@
 import { MouseEventHandler } from 'react'
-import styles from '../styles/Synth.module.css'
+import styles from '@/styles/Synth.module.css'
 
 
 interface powerButtonProps {
@@ -15,8 +15,3 @@ export function PowerButton({ onClick, power }: powerButtonProps) {
     </div>
   )
 }
-/*
-<button
-className={power ? styles.powerOn : styles.powerOff}
-onClick={onClick}
->Power</button>*/
