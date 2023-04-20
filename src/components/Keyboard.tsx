@@ -9,6 +9,8 @@ export function Keyboard() {
   const [keysPressed, setKeysPressed] = useState<string[]>([])
   const [synthList, setSynthList] = useState<Tone.Synth[]>([])
 
+  const allowedUserKeys = ['a', 's', 'd', 'f', 'j', 'k', 'l', ';']
+
   async function handleClickPowerButton() {
     setPower(!power)
 
@@ -26,31 +28,37 @@ export function Keyboard() {
   }
 
   function handleKeyDown(e: KeyboardEvent) {
-    if (!keysPressed.includes(e.key)) {
-      e.key === 'a' ? synthList[0].triggerAttack('C4') : ''
-      e.key === 's' ? synthList[1].triggerAttack('D4') : ''
-      e.key === 'd' ? synthList[2].triggerAttack('E4') : ''
-      e.key === 'f' ? synthList[3].triggerAttack('F4') : ''
-      e.key === 'j' ? synthList[4].triggerAttack('G4') : ''
-      e.key === 'k' ? synthList[5].triggerAttack('A4') : ''
-      e.key === 'l' ? synthList[6].triggerAttack('B4') : ''
-      e.key === ';' ? synthList[7].triggerAttack('C5') : ''
-      setKeysPressed([...keysPressed, e.key])
-      console.log(keysPressed)
+    const key = e.key.toLowerCase()
+    if (!keysPressed.includes(key) && allowedUserKeys.includes(key)) {
+
+      key === 'a' ? synthList[0].triggerAttack('C4') : ''
+      key === 's' ? synthList[1].triggerAttack('D4') : ''
+      key === 'd' ? synthList[2].triggerAttack('E4') : ''
+      key === 'f' ? synthList[3].triggerAttack('F4') : ''
+      key === 'j' ? synthList[4].triggerAttack('G4') : ''
+      key === 'k' ? synthList[5].triggerAttack('A4') : ''
+      key === 'l' ? synthList[6].triggerAttack('B4') : ''
+      key === ';' ? synthList[7].triggerAttack('C5') : ''
+
+      setKeysPressed([...keysPressed, key])
     }
   }
 
   function handleKeyUp(e: KeyboardEvent) {
-    if (keysPressed.includes(e.key)) {
-      e.key === 'a' ? synthList[0].triggerRelease() : ''
-      e.key === 's' ? synthList[1].triggerRelease() : ''
-      e.key === 'd' ? synthList[2].triggerRelease() : ''
-      e.key === 'f' ? synthList[3].triggerRelease() : ''
-      e.key === 'j' ? synthList[4].triggerRelease() : ''
-      e.key === 'k' ? synthList[5].triggerRelease() : ''
-      e.key === 'l' ? synthList[6].triggerRelease() : ''
-      e.key === ';' ? synthList[7].triggerRelease() : ''
-      setKeysPressed(keysPressed.filter(key => key !== e.key))
+    const key = e.key.toLowerCase()
+
+    if (keysPressed.includes(key) && allowedUserKeys.includes(key)) {
+
+      key === 's' ? synthList[1].triggerRelease() : ''
+      key === 'a' ? synthList[0].triggerRelease() : ''
+      key === 'd' ? synthList[2].triggerRelease() : ''
+      key === 'f' ? synthList[3].triggerRelease() : ''
+      key === 'j' ? synthList[4].triggerRelease() : ''
+      key === 'k' ? synthList[5].triggerRelease() : ''
+      key === 'l' ? synthList[6].triggerRelease() : ''
+      key === ';' ? synthList[7].triggerRelease() : ''
+
+      setKeysPressed(keysPressed.filter(k => k !== key))
     }
   }
 
