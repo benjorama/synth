@@ -1,5 +1,5 @@
 import React, { KeyboardEvent, useState } from 'react'
-import styles from '@/styles/Synth.module.css'
+import styles from '../styles/Synth.module.css'
 import { PowerButton } from './PowerButton'
 import { SynthKey } from './SynthKey'
 import * as Tone from 'tone'
