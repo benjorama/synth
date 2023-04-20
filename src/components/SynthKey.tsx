@@ -1,23 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from '@/styles/Synth.module.css'
 import * as Tone from 'tone'
 
 interface SynthKeyProps {
-  synth: Tone.Synth | undefined
+  synth: Tone.Synth
   keyboardKey: string
   pitch: string
-  duration: string
+  keyDown: boolean
 }
 
-export function SynthKey({ synth, keyboardKey, pitch, duration }: SynthKeyProps) {
-  function handleClick() {
-    synth ? synth.triggerAttackRelease(pitch, duration) : ''
+export function SynthKey({ synth, keyboardKey, pitch, keyDown }: SynthKeyProps) {
+  function handleMouseDown() {
+    synth.triggerAttack(pitch)
+  }
+
+  function handleMouseUp() {
+    synth.triggerRelease()
   }
 
   return (
     <button
-      className={styles.key}
-      onClick={handleClick}
+      className={keyDown ? styles.keyDown : styles.key}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
     >{`${pitch} (${keyboardKey})`}</button>
   )
 }
