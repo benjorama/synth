@@ -99,7 +99,10 @@
  }
 
 .key {
-  height: 10em;
+  height: 15em;
+  width: 5em;
+  margin: 0.1em;
+  border-radius: 10%;
   background-color: white;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
@@ -108,7 +111,10 @@
 }
 
 .keyDown {
-  height: 10em;
+  height: 15em;
+  width: 5em;
+  margin: 0.1em;
+  border-radius: 10%;
   background-color: lime;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;

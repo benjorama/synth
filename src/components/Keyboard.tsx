@@ -3,11 +3,13 @@ import styles from '@/styles/Synth.module.css'
 import { PowerButton } from './PowerButton'
 import { SynthKey } from './SynthKey'
 import * as Tone from 'tone'
+import { getState, setState } from '@/state'
 
 export function Keyboard() {
   const [power, setPower] = useState<boolean>(false)
   const [keysPressed, setKeysPressed] = useState<string[]>([])
   const [synthList, setSynthList] = useState<Tone.Synth[]>([])
+  const [keysClicked, setKeysClicked] = useState<string[]>([])
 
   const allowedUserKeys = ['a', 's', 'd', 'f', 'j', 'k', 'l', ';']
 
@@ -62,24 +64,30 @@ export function Keyboard() {
     }
   }
 
+  function handleMouse() {
+    setKeysClicked(getState().keysClicked)
+  }
+
   return (
     <div
       onKeyDown={handleKeyDown}
       onKeyUp={handleKeyUp}
+      onMouseDown={handleMouse}
+      onMouseUp={handleMouse}
     >
       <PowerButton onClick={handleClickPowerButton} power={power} />
       <p>Synth is {synthList.length > 0 ? 'loaded' : 'not loaded: click the red power button'}</p>
       <div
         className={styles.keyboard}
       >
-        <SynthKey synth={synthList[0]} keyboardKey="a" pitch="C4" keyDown={keysPressed.includes('a')} />
-        <SynthKey synth={synthList[1]} keyboardKey="s" pitch="D4" keyDown={keysPressed.includes('s')} />
-        <SynthKey synth={synthList[2]} keyboardKey="d" pitch="E4" keyDown={keysPressed.includes('d')} />
-        <SynthKey synth={synthList[3]} keyboardKey="f" pitch="F4" keyDown={keysPressed.includes('f')} />
-        <SynthKey synth={synthList[4]} keyboardKey="j" pitch="G4" keyDown={keysPressed.includes('j')} />
-        <SynthKey synth={synthList[5]} keyboardKey="k" pitch="A4" keyDown={keysPressed.includes('k')} />
-        <SynthKey synth={synthList[6]} keyboardKey="l" pitch="B4" keyDown={keysPressed.includes('l')} />
-        <SynthKey synth={synthList[7]} keyboardKey=";" pitch="C5" keyDown={keysPressed.includes(';')} />
+        <SynthKey synth={synthList[0]} keyboardKey="a" pitch="C4" keyDown={keysPressed.includes('a')} onClick={keysClicked.includes('C4')} />
+        <SynthKey synth={synthList[1]} keyboardKey="s" pitch="D4" keyDown={keysPressed.includes('s')} onClick={keysClicked.includes('D4')} />
+        <SynthKey synth={synthList[2]} keyboardKey="d" pitch="E4" keyDown={keysPressed.includes('d')} onClick={keysClicked.includes('E4')} />
+        <SynthKey synth={synthList[3]} keyboardKey="f" pitch="F4" keyDown={keysPressed.includes('f')} onClick={keysClicked.includes('F4')} />
+        <SynthKey synth={synthList[4]} keyboardKey="j" pitch="G4" keyDown={keysPressed.includes('j')} onClick={keysClicked.includes('G4')} />
+        <SynthKey synth={synthList[5]} keyboardKey="k" pitch="A4" keyDown={keysPressed.includes('k')} onClick={keysClicked.includes('A4')} />
+        <SynthKey synth={synthList[6]} keyboardKey="l" pitch="B4" keyDown={keysPressed.includes('l')} onClick={keysClicked.includes('B4')} />
+        <SynthKey synth={synthList[7]} keyboardKey=";" pitch="C5" keyDown={keysPressed.includes(';')} onClick={keysClicked.includes('C5')} />
       </div>
     </div>
   )
