@@ -10,8 +10,9 @@ export function Keyboard() {
   const [keysPressed, setKeysPressed] = useState<string[]>([])
   const [synthList, setSynthList] = useState<Tone.Synth[]>([])
   const [keysClicked, setKeysClicked] = useState<string[]>([])
+  const [octave, setOctave] = useState<number>(4)
 
-  const allowedUserKeys = ['a', 's', 'd', 'f', 'j', 'k', 'l', ';']
+  const allowedUserKeys = ['a', 's', 'd', 'f', 'j', 'k', 'l', ';', 'g', 'h']
 
   async function handleClickPowerButton() {
     setPower(!power)
@@ -33,14 +34,16 @@ export function Keyboard() {
     const key = e.key.toLowerCase()
     if (!keysPressed.includes(key) && allowedUserKeys.includes(key)) {
 
-      key === 'a' ? synthList[0].triggerAttack('C4') : ''
-      key === 's' ? synthList[1].triggerAttack('D4') : ''
-      key === 'd' ? synthList[2].triggerAttack('E4') : ''
-      key === 'f' ? synthList[3].triggerAttack('F4') : ''
-      key === 'j' ? synthList[4].triggerAttack('G4') : ''
-      key === 'k' ? synthList[5].triggerAttack('A4') : ''
-      key === 'l' ? synthList[6].triggerAttack('B4') : ''
-      key === ';' ? synthList[7].triggerAttack('C5') : ''
+      key === 'a' ? synthList[0].triggerAttack(`C${octave}`) : ''
+      key === 's' ? synthList[1].triggerAttack(`D${octave}`) : ''
+      key === 'd' ? synthList[2].triggerAttack(`E${octave}`) : ''
+      key === 'f' ? synthList[3].triggerAttack(`F${octave}`) : ''
+      key === 'j' ? synthList[4].triggerAttack(`G${octave}`) : ''
+      key === 'k' ? synthList[5].triggerAttack(`A${octave}`) : ''
+      key === 'l' ? synthList[6].triggerAttack(`B${octave}`) : ''
+      key === ';' ? synthList[7].triggerAttack(`C${octave + 1}`) : ''
+      key === 'g' ? setOctave(octave - 1) : ''
+      key === 'h' ? setOctave(octave + 1) : ''
 
       setKeysPressed([...keysPressed, key])
     }
@@ -51,8 +54,8 @@ export function Keyboard() {
 
     if (keysPressed.includes(key) && allowedUserKeys.includes(key)) {
 
-      key === 's' ? synthList[1].triggerRelease() : ''
       key === 'a' ? synthList[0].triggerRelease() : ''
+      key === 's' ? synthList[1].triggerRelease() : ''
       key === 'd' ? synthList[2].triggerRelease() : ''
       key === 'f' ? synthList[3].triggerRelease() : ''
       key === 'j' ? synthList[4].triggerRelease() : ''
