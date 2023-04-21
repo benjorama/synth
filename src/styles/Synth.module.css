@@ -102,10 +102,8 @@
   height: 15em;
   width: 5em;
   margin: 0.1em;
-  border-radius: 10%;
+  border-radius: 0 0 10% 10%;
   background-color: white;
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
   color: black;
   flex: 1;
 }
@@ -114,10 +112,8 @@
   height: 15em;
   width: 5em;
   margin: 0.1em;
-  border-radius: 10%;
+  border-radius: 0 0 10% 10%;
   background-color: lime;
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
   color: black;
   flex: 1;
 }

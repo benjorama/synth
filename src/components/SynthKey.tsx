@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from '@/styles/Synth.module.css'
 import * as Tone from 'tone'
-import { getState, setState } from '@/state';
+import { getState, setState } from '@/State';
 
 interface SynthKeyProps {
   synth: Tone.Synth

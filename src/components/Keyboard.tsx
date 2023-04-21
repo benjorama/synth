@@ -3,7 +3,7 @@ import styles from '@/styles/Synth.module.css'
 import { PowerButton } from './PowerButton'
 import { SynthKey } from './SynthKey'
 import * as Tone from 'tone'
-import { getState, setState } from '@/state'
+import { getState, setState } from '@/State'
 
 export function Keyboard() {
   const [power, setPower] = useState<boolean>(false)
