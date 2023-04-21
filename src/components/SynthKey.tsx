@@ -13,13 +13,17 @@ interface SynthKeyProps {
 
 export function SynthKey({ synth, keyboardKey, pitch, keyDown, onClick }: SynthKeyProps) {
   function handleMouseDown() {
-    synth.triggerAttack(pitch)
-    setState({ keysClicked: getState().keysClicked.concat([pitch]) })
+    if (synth) {
+      synth.triggerAttack(pitch)
+      setState({ keysClicked: getState().keysClicked.concat([pitch]) })
+    }
   }
 
   function handleMouseUp() {
-    synth.triggerRelease()
-    setState({ keysClicked: getState().keysClicked.filter(i => i !== pitch) })
+    if (synth) {
+      synth.triggerRelease()
+      setState({ keysClicked: getState().keysClicked.filter(i => i !== pitch) })
+    }
   }
 
   return (
