@@ -83,14 +83,14 @@ export function Keyboard() {
       <div
         className={styles.keyboard}
       >
-        <SynthKey synth={synthList[0]} keyboardKey="a" pitch="C4" keyDown={keysPressed.includes('a')} onClick={keysClicked.includes('C4')} />
-        <SynthKey synth={synthList[1]} keyboardKey="s" pitch="D4" keyDown={keysPressed.includes('s')} onClick={keysClicked.includes('D4')} />
-        <SynthKey synth={synthList[2]} keyboardKey="d" pitch="E4" keyDown={keysPressed.includes('d')} onClick={keysClicked.includes('E4')} />
-        <SynthKey synth={synthList[3]} keyboardKey="f" pitch="F4" keyDown={keysPressed.includes('f')} onClick={keysClicked.includes('F4')} />
-        <SynthKey synth={synthList[4]} keyboardKey="j" pitch="G4" keyDown={keysPressed.includes('j')} onClick={keysClicked.includes('G4')} />
-        <SynthKey synth={synthList[5]} keyboardKey="k" pitch="A4" keyDown={keysPressed.includes('k')} onClick={keysClicked.includes('A4')} />
-        <SynthKey synth={synthList[6]} keyboardKey="l" pitch="B4" keyDown={keysPressed.includes('l')} onClick={keysClicked.includes('B4')} />
-        <SynthKey synth={synthList[7]} keyboardKey=";" pitch="C5" keyDown={keysPressed.includes(';')} onClick={keysClicked.includes('C5')} />
+        <SynthKey synth={synthList[0]} keyboardKey="a" pitch={`C${octave}`} keyDown={keysPressed.includes('a')} onClick={keysClicked.includes(`C${octave}`)} />
+        <SynthKey synth={synthList[1]} keyboardKey="s" pitch={`D${octave}`} keyDown={keysPressed.includes('s')} onClick={keysClicked.includes(`D${octave}`)} />
+        <SynthKey synth={synthList[2]} keyboardKey="d" pitch={`E${octave}`} keyDown={keysPressed.includes('d')} onClick={keysClicked.includes(`E${octave}`)} />
+        <SynthKey synth={synthList[3]} keyboardKey="f" pitch={`F${octave}`} keyDown={keysPressed.includes('f')} onClick={keysClicked.includes(`F${octave}`)} />
+        <SynthKey synth={synthList[4]} keyboardKey="j" pitch={`G${octave}`} keyDown={keysPressed.includes('j')} onClick={keysClicked.includes(`G${octave}`)} />
+        <SynthKey synth={synthList[5]} keyboardKey="k" pitch={`A${octave}`} keyDown={keysPressed.includes('k')} onClick={keysClicked.includes(`A${octave}`)} />
+        <SynthKey synth={synthList[6]} keyboardKey="l" pitch={`B${octave}`} keyDown={keysPressed.includes('l')} onClick={keysClicked.includes(`B${octave}`)} />
+        <SynthKey synth={synthList[7]} keyboardKey=";" pitch={`C${octave + 1}`} keyDown={keysPressed.includes(';')} onClick={keysClicked.includes(`C${octave + 1}`)} />
       </div>
     </div>
   )
