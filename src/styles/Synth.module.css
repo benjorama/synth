@@ -14,13 +14,18 @@
   width: 3em;
   height: 3em;
   border-radius: 50%;
-  border: 2px solid red;
-  box-shadow: 0 0 5px 0px #888;
+  border: 2px solid darkred;
+  box-shadow: 0px 0px 5px 3px darkred;
   position: relative;
   display: grid;
   place-items: center;
   margin: 0.5em;
   cursor: pointer;
+}
+
+.powerButtonOff:focus {
+  border: 2px solid red;
+  box-shadow: 0px 0px 8px 3px red;
 }
 
 .powerButtonOff::before {
@@ -50,7 +55,7 @@
   height: 3em;
   border-radius: 50%;
   border: 2px solid lime;
-  box-shadow: 0 0 5px 0px #888;
+  box-shadow: 0px 0px 23px 3px lime;
   position: relative;
   display: grid;
   place-items: center;
@@ -86,39 +91,19 @@
   height: 1000px;
 }
 
-
-.powerOn {
-  margin: 1em;
-  color: black;
-  background-color: lime;
-  border-radius: 50%;
-  height: 4em;
-  width: 4em;
-}
-
-.powerOff {
-  margin: 1em;
-  background-color: red;
-  border-radius: 50%;
-  height: 4em;
-  width: 4em;
-}
-
-.keyboardOn {
-   align-items: center;
-   display: flex;
-   justify-content: center;
-   padding: 1em;
-   background-color: #222222;
-   box-shadow: 0px 0px 1px 3px lime;
-}
-
-.keyboardOff {
+.keyboardOn, .keyboardOff {
   align-items: center;
   display: flex;
   justify-content: center;
   padding: 1em;
   background-color: #222222;
+}
+
+.keyboardOn {
+   box-shadow: 0px 0px 1px 3px lime;
+}
+
+.keyboardOff {
   box-shadow: 0px 0px 1px 3px red;
 }
 
@@ -134,12 +119,15 @@
 .whiteKey, .whiteKeyDown, .blackKey, .blackKeyDown {
   font-weight: bold !important;
   border-radius: 0 0 10% 10%;
+  flex: 1;
 }
 
 .whiteKey, .whiteKeyDown {
   color: black;
-  height: 15em;
-  width: 6em;
+  min-height: 13em;
+  min-width: 5em;
+  max-height: 15em;
+  max-width: 6em;
 }
 
 .whiteKey {
@@ -151,9 +139,10 @@
 }
 
 .blackKey, .blackKeyDown {
-  height: 13em;
-  width: 4em;
-  border-radius: 0 0 10% 10%;
+  min-height: 10em;
+  min-width: 3em;
+  max-height: 12em;
+  max-width: 4em;
 }
 
 .blackKey {

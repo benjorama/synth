@@ -9,8 +9,8 @@ interface powerButtonProps {
 
 export function PowerButton({ onClick, power }: powerButtonProps) {
   return (
-    <div className={power ? styles.powerButtonOn : styles.powerButtonOff} onClick={onClick}>
-      <div className={power ? styles.barOn : styles.barOff}>
+    <div className={power ? styles.powerButtonOn : styles.powerButtonOff} onClick={onClick} tabIndex={1}>
+      <div className={power ? styles.barOn : styles.barOff} tabIndex={2}>
       </div>
     </div>
   )
