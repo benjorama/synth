@@ -9,9 +9,10 @@ interface SynthKeyProps {
   pitch: string
   keyDown: boolean
   onClick: boolean
+  enabled: boolean
 }
 
-export function SynthKey({ synth, keyboardKey, pitch, keyDown, onClick }: SynthKeyProps) {
+export function SynthKey({ synth, keyboardKey, pitch, keyDown, onClick, enabled = false }: SynthKeyProps) {
   function handleMouseDown() {
     if (synth) {
       synth.triggerAttack(pitch)
@@ -26,11 +27,25 @@ export function SynthKey({ synth, keyboardKey, pitch, keyDown, onClick }: SynthK
     }
   }
 
-  return (
+  const enabledKey = (
     <button
       className={keyDown || onClick ? styles.keyDown : styles.key}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
     >{`${pitch} (${keyboardKey})`}</button>
   )
+
+  const disabledKey = (
+    <button
+      className={keyDown || onClick ? styles.keyDown : styles.key}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+      disabled
+    >{`${pitch} (${keyboardKey})`}</button>
+  )
+
+  if (enabled)
+    return enabledKey
+
+  return disabledKey
 }

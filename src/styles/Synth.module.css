@@ -1,3 +1,15 @@
+.keyboardContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  flex-direction: column;
+}
+
+.keyboardContainer p {
+  margin: 1em;
+  font-weight: bold;
+}
+
 .powerButtonOff {
   width: 3em;
   height: 3em;
@@ -98,22 +110,23 @@
    justify-content: center;
  }
 
+ .keyboard button:disabled {
+  background-color: gray;
+ }
+
 .key {
   height: 15em;
-  width: 5em;
+  width: 8em;
   margin: 0.1em;
   border-radius: 0 0 10% 10%;
   background-color: white;
   color: black;
-  flex: 1;
 }
 
 .keyDown {
   height: 15em;
-  width: 5em;
-  margin: 0.1em;
+  width: 8em;
   border-radius: 0 0 10% 10%;
   background-color: lime;
   color: black;
-  flex: 1;
 }
