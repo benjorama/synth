@@ -153,6 +153,7 @@ export function Keyboard() {
     >
       <PowerButton onClick={handleClickPowerButton} power={power} />
       <p>Synth is {synthList.length > 0 ? 'loaded' : 'not loaded: click the red power button'}</p>
+      <p>'g' to decrease the octive, 'h' to increase the octive</p>
       <div
         className={power ? styles.keyboardOn : styles.keyboardOff}
       >

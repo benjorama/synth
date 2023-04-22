@@ -131,34 +131,37 @@
   flex-direction: row;
 }
 
-.whiteKey {
-  height: 15em;
-  width: 8em;
+.whiteKey, .whiteKeyDown, .blackKey, .blackKeyDown {
+  font-weight: bold !important;
   border-radius: 0 0 10% 10%;
-  background-color: white;
+}
+
+.whiteKey, .whiteKeyDown {
   color: black;
+  height: 15em;
+  width: 6em;
+}
+
+.whiteKey {
+  background-color: white;
 }
 
 .whiteKeyDown {
-  height: 15em;
-  width: 8em;
-  border-radius: 0 0 10% 10%;
   background-color: lime;
-  color: black;
 }
 
-.blackKey {
+.blackKey, .blackKeyDown {
   height: 13em;
   width: 4em;
   border-radius: 0 0 10% 10%;
+}
+
+.blackKey {
   background-color: black;
   color: white;
 }
 
 .blackKeyDown {
-  height: 13em;
-  width: 4em;
-  border-radius: 0 0 10% 10%;
   background-color: lime;
   color: black;
 }
