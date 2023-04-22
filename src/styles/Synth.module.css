@@ -104,28 +104,60 @@
   width: 4em;
 }
 
-.keyboard {
+.keyboardOn {
    align-items: center;
    display: flex;
    justify-content: center;
- }
+   padding: 1em;
+   background-color: #222222;
+   box-shadow: 0px 0px 1px 3px lime;
+}
 
- .keyboard button:disabled {
+.keyboardOff {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+  background-color: #222222;
+  box-shadow: 0px 0px 1px 3px red;
+}
+
+.keyboardOff button:disabled {
   background-color: gray;
- }
+}
 
-.key {
+.keyComboContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.whiteKey {
   height: 15em;
   width: 8em;
-  margin: 0.1em;
   border-radius: 0 0 10% 10%;
   background-color: white;
   color: black;
 }
 
-.keyDown {
+.whiteKeyDown {
   height: 15em;
   width: 8em;
+  border-radius: 0 0 10% 10%;
+  background-color: lime;
+  color: black;
+}
+
+.blackKey {
+  height: 13em;
+  width: 4em;
+  border-radius: 0 0 10% 10%;
+  background-color: black;
+  color: white;
+}
+
+.blackKeyDown {
+  height: 13em;
+  width: 4em;
   border-radius: 0 0 10% 10%;
   background-color: lime;
   color: black;
