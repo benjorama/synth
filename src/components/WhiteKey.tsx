@@ -23,7 +23,7 @@ export function WhiteKey({ synth, keyboardKey, pitch, keyDown, onClick, enabled 
       className={keyDown || onClick ? styles.whiteKeyDown : styles.whiteKey}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
-    >{`${pitch} (${keyboardKey})`}</button>
+    ><p>{`${pitch} (${keyboardKey})`}</p></button>
   )
 
   const disabledKey = (
@@ -32,7 +32,7 @@ export function WhiteKey({ synth, keyboardKey, pitch, keyDown, onClick, enabled 
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       disabled
-    >{`${pitch} (${keyboardKey})`}</button>
+    ><p>{`${pitch} (${keyboardKey})`}</p></button>
   )
 
   if (enabled)

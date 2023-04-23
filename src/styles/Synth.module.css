@@ -72,7 +72,6 @@
     height: 50%;
     border-radius: 50%;
     border: 5px solid lime;
-    position: absolute;
 }
 
 .barOn {
@@ -92,11 +91,12 @@
 }
 
 .keyboardOn, .keyboardOff {
-  align-items: center;
   display: flex;
   justify-content: center;
   padding: 1em;
   background-color: #222222;
+  margin: auto;
+  text-align: center;
 }
 
 .keyboardOn {
@@ -111,23 +111,19 @@
   background-color: gray;
 }
 
-.keyComboContainer {
-  display: flex;
-  flex-direction: row;
-}
-
 .whiteKey, .whiteKeyDown, .blackKey, .blackKeyDown {
   font-weight: bold !important;
   border-radius: 0 0 10% 10%;
-  flex: 1;
+  border: 3px solid black; 
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .whiteKey, .whiteKeyDown {
   color: black;
-  min-height: 13em;
-  min-width: 5em;
-  max-height: 15em;
-  max-width: 6em;
+  height: 25em;
+  width: 9%;
 }
 
 .whiteKey {
@@ -139,10 +135,11 @@
 }
 
 .blackKey, .blackKeyDown {
-  min-height: 10em;
-  min-width: 3em;
-  max-height: 12em;
-  max-width: 4em;
+  height: 18em;
+  width: 6%;
+  margin-left: -3%;
+  margin-right: -3%;
+  z-index: 1;
 }
 
 .blackKey {

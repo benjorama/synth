@@ -94,40 +94,34 @@ export function Keyboard() {
     let keys: JSX.Element[] = []
 
     pitches.forEach((pitch, i) => {
-      let keyCombo: JSX.Element
-
       if (pitch.includes('E') || pitch.includes('B')) {
         const keyboardKey = pitch.includes('E') ? 'd' : 'l'
 
-        keyCombo = <WhiteKey synth={synthList[0]} 
+        keys.push(<WhiteKey synth={synthList[0]} 
             keyboardKey={keyboardKey} 
             pitch={`${pitch}${octave}`} 
             keyDown={keysPressed.includes(keyboardKey)} 
             onClick={keysClicked.includes(`${pitch}${octave}`)} 
             enabled={power} 
-            key={i} />
+            key={`${i}_${pitch}${octave}`} />)
 
       } else {
-        keyCombo = (
-          <div className={styles.keyComboContainer} key={i}>
-            <WhiteKey synth={synthList[0]} 
+        keys.push(<WhiteKey synth={synthList[0]} 
               keyboardKey={whiteKeys[i]}
               pitch={`${pitch}${octave}`} 
               keyDown={keysPressed.includes(whiteKeys[i])} 
               onClick={keysClicked.includes(`${pitch}${octave}`)} 
-              enabled={power} />
+              enabled={power} 
+              key={`${i}_${pitch}${octave}`} />)
               
-            <BlackKey synth={synthList[0]} 
+        keys.push(<BlackKey synth={synthList[0]} 
               keyboardKey={blackKeys[i]} 
               pitch={getSharp(`${pitch}${octave}`)} 
               keyDown={keysPressed.includes(blackKeys[i])} 
               onClick={keysClicked.includes(getSharp(`${pitch}${octave}`))} 
-              enabled={power} />
-          </div>
-        )
+              enabled={power} 
+              key={`${i}_${getSharp(`${pitch}${octave}`)}`} />)
       }
-
-      keys.push(keyCombo)
     })
 
     const nextOctaveC = <WhiteKey synth={synthList[0]} 
@@ -136,7 +130,7 @@ export function Keyboard() {
             keyDown={keysPressed.includes(';')} 
             onClick={keysClicked.includes(`C${octave + 1}`)} 
             enabled={power}
-            key={pitches.length + 1} />
+            key={`${pitches.length}_C${octave + 1}`} />
 
     keys.push(nextOctaveC)
 
@@ -144,20 +138,22 @@ export function Keyboard() {
   }
 
   return (
-    <div
-      onKeyDown={handleKeyDown}
-      onKeyUp={handleKeyUp}
-      onMouseDown={handleMouse}
-      onMouseUp={handleMouse}
-      className={styles.keyboardContainer}
-    >
-      <PowerButton onClick={handleClickPowerButton} power={power} />
-      <p>Synth is {synthList.length > 0 ? 'loaded' : 'not loaded: click the red power button'}</p>
-      <p>'g' to decrease the octive, 'h' to increase the octive</p>
+    <div className={styles.parent}>
       <div
-        className={power ? styles.keyboardOn : styles.keyboardOff}
+        onKeyDown={handleKeyDown}
+        onKeyUp={handleKeyUp}
+        onMouseDown={handleMouse}
+        onMouseUp={handleMouse}
+        className={styles.keyboardContainer}
       >
-        {keys()}
+        <PowerButton onClick={handleClickPowerButton} power={power} />
+        <p>Synth is {synthList.length > 0 ? 'loaded' : 'not loaded: click the red power button'}</p>
+        <p>'g' to decrease the octive, 'h' to increase the octive</p>
+        <div
+          className={power ? styles.keyboardOn : styles.keyboardOff}
+        >
+          {keys()}
+        </div>
       </div>
     </div>
   )
