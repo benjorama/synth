@@ -39,7 +39,7 @@ export function WhiteKey({ synth, keyboardKey, pitch, keyDown, onClick, enabled 
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       disabled
-    ><p>{`${pitch} (${keyboardKey})`}</p></button>
+    ><p>{pitchLabel}</p></button>
   )
 
   if (enabled)

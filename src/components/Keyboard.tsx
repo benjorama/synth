@@ -145,12 +145,12 @@ export function Keyboard() {
         onMouseUp={handleMouse}
         className={styles.keyboardContainer}
       >
-        <PowerButton onClick={handleClickPowerButton} power={power} />
         <p>Synth is {synthList.length > 0 ? 'loaded' : 'not loaded: click the red power button'}</p>
         <p>'g' to decrease the octave, 'h' to increase the octave</p>
         <div
           className={power ? styles.keyboardOn : styles.keyboardOff}
         >
+          <PowerButton onClick={handleClickPowerButton} power={power} />
           {keys()}
         </div>
       </div>
