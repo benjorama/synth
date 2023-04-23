@@ -18,12 +18,19 @@ export function WhiteKey({ synth, keyboardKey, pitch, keyDown, onClick, enabled 
     }
   }
 
+  const pitchLabel = (
+    <div className={styles.pitchContainer}>
+      <p>{pitch}</p>
+      <span>({keyboardKey})</span>
+    </div>
+  )
+
   const enabledKey = (
     <button
       className={keyDown || onClick ? styles.whiteKeyDown : styles.whiteKey}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
-    ><p>{`${pitch} (${keyboardKey})`}</p></button>
+    >{pitchLabel}</button>
   )
 
   const disabledKey = (

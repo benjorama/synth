@@ -5,6 +5,7 @@ import { WhiteKey } from './WhiteKey'
 import * as Tone from 'tone'
 import { getState, setState } from '@/State'
 import { BlackKey } from './BlackKey'
+import { getSharp } from '@/Utils'
 
 export function Keyboard() {
   const [power, setPower] = useState<boolean>(false)
@@ -88,8 +89,6 @@ export function Keyboard() {
     setKeysClicked(getState().keysClicked)
   }
 
-  const getSharp = (pitch: string) => pitch.slice(0, 1) + "#" + pitch.slice(1)
-
   const keys = () => {
     let keys: JSX.Element[] = []
 
@@ -148,7 +147,7 @@ export function Keyboard() {
       >
         <PowerButton onClick={handleClickPowerButton} power={power} />
         <p>Synth is {synthList.length > 0 ? 'loaded' : 'not loaded: click the red power button'}</p>
-        <p>'g' to decrease the octive, 'h' to increase the octive</p>
+        <p>'g' to decrease the octave, 'h' to increase the octave</p>
         <div
           className={power ? styles.keyboardOn : styles.keyboardOff}
         >

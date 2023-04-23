@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from '@/styles/Synth.module.css'
 import { getState, setState } from '@/State';
 import { SynthKeyProps } from './SynthKey';
+import { getFlat } from '@/Utils';
 
 export function BlackKey({ synth, keyboardKey, pitch, keyDown, onClick, enabled = false }: SynthKeyProps) {
   function handleMouseDown() {
@@ -18,12 +19,20 @@ export function BlackKey({ synth, keyboardKey, pitch, keyDown, onClick, enabled 
     }
   }
 
+  const pitchLabel = (
+    <div className={styles.pitchContainer}>
+        <p>{`${pitch}`}</p>
+        <p>{`${getFlat(pitch, true)}`}</p>
+        <span>({keyboardKey})</span>
+    </div>
+  )
+
   const enabledKey = (
     <button
       className={keyDown || onClick ? styles.blackKeyDown : styles.blackKey}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
-    ><p>{`${pitch} (${keyboardKey})`}</p></button>
+    >{pitchLabel}</button>
   )
 
   const disabledKey = (
@@ -32,7 +41,7 @@ export function BlackKey({ synth, keyboardKey, pitch, keyDown, onClick, enabled 
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       disabled
-    ><p>{`${pitch} (${keyboardKey})`}</p></button>
+    >{pitchLabel}</button>
   )
 
   if (enabled)
