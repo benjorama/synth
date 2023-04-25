@@ -1,13 +1,29 @@
+.keyboardContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  flex-direction: column;
+}
+
+.keyboardContainer p {
+  font-weight: bold;
+}
+
+.powerButtonOff, .powerButtonOn {
+  margin-top: 0.5em;
+  margin-left: 0.5em;
+  margin-right: 6em;
+}
+
 .powerButtonOff {
   width: 3em;
   height: 3em;
   border-radius: 50%;
-  border: 2px solid red;
-  box-shadow: 0 0 5px 0px #888;
+  border: 2px solid darkred;
+  box-shadow: 0px 0px 5px 3px darkred;
   position: relative;
   display: grid;
   place-items: center;
-  margin: 0.5em;
   cursor: pointer;
 }
 
@@ -38,11 +54,10 @@
   height: 3em;
   border-radius: 50%;
   border: 2px solid lime;
-  box-shadow: 0 0 5px 0px #888;
+  box-shadow: 0px 0px 23px 3px lime;
   position: relative;
   display: grid;
   place-items: center;
-  margin: 0.5em;
   cursor: pointer;
 }
 
@@ -55,7 +70,6 @@
     height: 50%;
     border-radius: 50%;
     border: 5px solid lime;
-    position: absolute;
 }
 
 .barOn {
@@ -74,46 +88,75 @@
   height: 1000px;
 }
 
-
-.powerOn {
+.keyboardOn, .keyboardOff {
+  display: flex;
+  justify-content: center;
+  padding: 0.5em;
+  background-color: #0D0D0D;
   margin: 1em;
-  color: black;
-  background-color: lime;
-  border-radius: 50%;
-  height: 4em;
-  width: 4em;
+  text-align: center;
 }
 
-.powerOff {
-  margin: 1em;
-  background-color: red;
-  border-radius: 50%;
-  height: 4em;
-  width: 4em;
+.keyboardOn {
+   box-shadow: 0px 0px 1px 3px lime;
 }
 
-.keyboard {
-   align-items: center;
-   display: flex;
-   justify-content: center;
- }
+.keyboardOff {
+  box-shadow: 0px 0px 1px 3px red;
+}
 
-.key {
-  height: 15em;
-  width: 5em;
-  margin: 0.1em;
+.keyboardOff button:disabled {
+  background-color: gray;
+}
+
+.whiteKey, .whiteKeyDown, .blackKey, .blackKeyDown {
+  font-weight: bold !important;
   border-radius: 0 0 10% 10%;
+  border: 3px solid black; 
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0.5em;
+}
+
+.pitchContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+
+.pitchContainer span {
+  font-size: 0.6rem;
+}
+
+.whiteKey, .whiteKeyDown {
+  color: black;
+  height: 25em;
+  width: 9%;
+}
+
+.whiteKey {
   background-color: white;
-  color: black;
-  flex: 1;
 }
 
-.keyDown {
-  height: 15em;
-  width: 5em;
-  margin: 0.1em;
-  border-radius: 0 0 10% 10%;
+.whiteKeyDown {
+  background-color: lime;
+}
+
+.blackKey, .blackKeyDown {
+  height: 18em;
+  width: 6%;
+  margin-left: -3%;
+  margin-right: -3%;
+  z-index: 1;
+}
+
+.blackKey {
+  background-color: black;
+  color: white;
+}
+
+.blackKeyDown {
   background-color: lime;
   color: black;
-  flex: 1;
 }

@@ -8,7 +8,10 @@ export default function SynthPage() {
         <title>Synth Page</title>
       </Head>
       <main>
-        <h1>Synth Page</h1>
+        <div id="title">
+          <div></div>
+          <h1>Synth Page</h1>
+        </div>
         <Keyboard />
       </main>
     </>

@@ -1,7 +1,6 @@
 import { MouseEventHandler } from 'react'
 import styles from '@/styles/Synth.module.css'
 
-
 interface powerButtonProps {
   onClick: MouseEventHandler
   power: boolean

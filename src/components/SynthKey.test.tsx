@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { SynthKey } from './SynthKey'
+import { WhiteKey } from './WhiteKey'
 
 describe('SynthKey', () => {
   it('renders a Key', () => {
-    render(<SynthKey pitch='C4' />)
+    render(<WhiteKey pitch='C4' />)
     expect(screen.getByText('C4')).toBeInTheDocument()
   })
 })

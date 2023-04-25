@@ -108,4 +108,30 @@ a {
 
 main {
   margin: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#title {
+  border: 2px solid lime;
+  margin-bottom: 5em;
+}
+
+#title div {
+  height: 1em;
+  box-shadow: 0px -5px 0px 0px black;
+}
+
+#title h1 {
+  margin: 0.5em;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*:focus {
+  border: 1px solid yellow;
 }
