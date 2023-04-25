@@ -27,11 +27,6 @@
   cursor: pointer;
 }
 
-.powerButtonOff:focus {
-  border: 2px solid red;
-  box-shadow: 0px 0px 8px 3px red;
-}
-
 .powerButtonOff::before {
     /* pseudo-elements don't appear unless content property is declared */
     content: "";

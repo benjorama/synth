@@ -16,4 +16,4 @@ export default function SynthPage() {
       </main>
     </>
   )
-} // TODO: Create Component for Title
+}
