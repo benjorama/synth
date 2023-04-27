@@ -24,7 +24,7 @@ export function Keyboard() {
 
     if (!power) {
       await Tone.start()
-      Tone.context.lookAhead = 0.25
+      Tone.context.lookAhead = 0.025
       let synths = []
       for (let i = 0; i < 13; i++)
         synths.push(new Tone.Synth().toDestination())
