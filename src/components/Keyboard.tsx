@@ -36,6 +36,7 @@ export function Keyboard() {
   }
 
   function handleKeyDown(e: KeyboardEvent) {
+    Tone.immediate()
     const key = e.key.toLowerCase()
     if (!keysPressed.includes(key) && allowedUserKeys.includes(key)) {
 
