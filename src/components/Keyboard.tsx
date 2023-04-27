@@ -24,6 +24,7 @@ export function Keyboard() {
 
     if (!power) {
       await Tone.start()
+      Tone.context.lookAhead = 0.25
       let synths = []
       for (let i = 0; i < 13; i++)
         synths.push(new Tone.Synth().toDestination())
@@ -36,7 +37,6 @@ export function Keyboard() {
   }
 
   function handleKeyDown(e: KeyboardEvent) {
-    Tone.immediate()
     const key = e.key.toLowerCase()
     if (!keysPressed.includes(key) && allowedUserKeys.includes(key)) {
 
